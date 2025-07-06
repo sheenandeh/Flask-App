@@ -146,43 +146,46 @@ ________________________________________
 git clone https://github.com/HILL-TOPCONSULTANCY/bootcamp-project-1.git
 cd bootcamp-project-1
 ________________________________________
-2. Check Docker Is Installed
+2. Check if Docker Is Installed
 docker --version
 You should see something like Docker version 24.0.0.
 ________________________________________
-3. Build and Run the Containers
+3. Install and start docker desktop on your local machine
+
+4. Build and Run the Containers
 docker-compose up --build -d
 Explanation:
 •	--build builds the image using Dockerfile
 •	-d runs in the background
 ________________________________________
-4. Access the Application
+5. Access the Application
 Open your browser and go to:
 http://localhost:5050
 You should see the web dashboard.
 ________________________________________
-5. Test API Endpoints
+6. Test API Endpoints
 curl http://localhost:5050/health
 curl http://localhost:5050/metrics
 curl -X POST http://localhost:5050/reset
 Each returns a JSON response with status or data.
 ________________________________________
 6. Test Data Persistence
-docker-compose down
-docker-compose up -d
-Visitor count should still be there — thanks to volume storage.
+docker-compose stop
+docker-compose start -d
+
 ________________________________________
-7. Simulate MongoDB Failure
+7. Simulate MongoDB Failure to test data persistence
 Stop MongoDB:
 docker stop mongodb
 Now refresh the web page. MongoDB status will show as "Disconnected" and app status will be "Degraded".
 To bring it back:
 docker start mongodb
 Refresh again to reconnect.
+This stops the container and restarts it. Visitor count should still be there — thanks to volume storage. This confirms your data persistence.
 ________________________________________
 8. Push to GitHub
 git add .
-git commit -m "Final project working"
+git commit -m "Final flask project"
 git push
 ________________________________________
 ✅ Success Criteria
