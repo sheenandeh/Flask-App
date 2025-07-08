@@ -1,5 +1,5 @@
 
-# Project 1: Docker Containerization Challenge
+# PROJECT 1: DOCKER CONTAINERIZATION CHALLENGE
 **Nebulance Systems BootCamp DevOps Class2025A**
 
 
@@ -10,6 +10,7 @@ This project is about building and deploying a **Flask Visitor Counter Web Appli
 You are not just building the app — you are **containerizing it using Docker and Docker Compose** so it can run anywhere, anytime.
 
 ---
+
 
 ## ✅ Expected Outcome
 
@@ -23,6 +24,7 @@ You are not just building the app — you are **containerizing it using Docker a
 - Clear MongoDB connection status shown on the interface
 
 ---
+
 
 ## 📚 Key Terms Explained
 
@@ -44,11 +46,6 @@ You are not just building the app — you are **containerizing it using Docker a
 
 
 
-
-
-
-
-
 ## 📁 Project Structure Overview
 
 bootcamp-project-1/
@@ -59,6 +56,8 @@ bootcamp-project-1/
 ├── requirements.txt
 └── templates/
 └── index.html
+
+
 
 
 
@@ -74,6 +73,9 @@ MONGODB_PORT=27017
 MONGODB_DB=visitor_counter
 
 ---
+
+
+
 
 ## 📦 Dockerfile
 
@@ -93,8 +95,13 @@ ENV FLASK_ENV=production
 
 CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
 
-📂 docker-compose.yml
+
+
+
+
+## 📂 docker-compose.yml file
 Used to run Flask and MongoDB together.
+
 version: '3.8'
 
 services:
@@ -122,17 +129,23 @@ services:
       - mongo_data:/data/db
 
 volumes:
-  mongo_data:
-________________________________________
-📜 requirements.txt
+  mongo_data:' 
+
+
+  
+
+## 📜 requirements.txt
 Python dependencies.
 Flask==2.3.3
 pymongo==4.6.0
 python-dotenv==1.0.0
 gunicorn==21.2.0
 Werkzeug==2.3.7
-________________________________________
-🧪 How the App Works (app.py Summary)
+
+
+
+
+## 🧪 How the App Works (app.py Summary)
 •	Starts a web server using Flask.
 •	Connects to MongoDB using environment values.
 •	Routes include:
@@ -140,41 +153,62 @@ o	/ — Displays the homepage and updates the visitor count
 o	/health — Returns JSON health status
 o	/metrics — Returns visit stats
 o	/reset — Resets the counter
-________________________________________
-🚀 Step-by-Step Deployment Guide
-1. Open VS Code and Clone the Repo
+
+
+
+
+
+# 🚀 STEP BY STEP DEPLOYMENT GUIDE
+
+
+## 1. Open VS Code and Clone the Repo
 git clone https://github.com/HILL-TOPCONSULTANCY/bootcamp-project-1.git
 cd bootcamp-project-1
-________________________________________
-2. Check if Docker Is Installed
+
+
+
+## 2. Check if Docker Is Installed
 docker --version
 You should see something like Docker version 24.0.0.
-________________________________________
-3. Install and start docker desktop on your local machine
 
-4. Build and Run the Containers
+
+
+## 3. Install and start docker desktop on your local machine
+In the search bar, search for docker desktop and run it as administrator
+Once it launches and you see the docker icon you can go back to VS code and conitnue implentation
+
+
+
+## 4. Build and Run the Containers
 docker-compose up --build -d
-Explanation:
+## Explanation:
 •	--build builds the image using Dockerfile
 •	-d runs in the background
-________________________________________
-5. Access the Application
+
+
+
+## 5. Access the Application
 Open your browser and go to:
 http://localhost:5050
 You should see the web dashboard.
-________________________________________
-6. Test API Endpoints
+
+
+
+## 6. Test API Endpoints
 curl http://localhost:5050/health
 curl http://localhost:5050/metrics
 curl -X POST http://localhost:5050/reset
-Each returns a JSON response with status or data.
-________________________________________
-6. Test Data Persistence
+Each returns a JSON response with status or data. 
+
+
+
+## 7. Test Data Persistence
 docker-compose stop
 docker-compose start -d
 
-________________________________________
-7. Simulate MongoDB Failure to test data persistence
+
+
+## 8. Simulate MongoDB Failure to test data persistence
 Stop MongoDB:
 docker stop mongodb
 Now refresh the web page. MongoDB status will show as "Disconnected" and app status will be "Degraded".
@@ -182,30 +216,40 @@ To bring it back:
 docker start mongodb
 Refresh again to reconnect.
 This stops the container and restarts it. Visitor count should still be there — thanks to volume storage. This confirms your data persistence.
-________________________________________
-8. Push to GitHub
+
+
+
+## 9. Push to GitHub
+git init
 git add .
 git commit -m "Final flask project"
 git push
-________________________________________
-✅ Success Criteria
+
+
+
+## ✅ Success Criteria
 •	Application loads at http://localhost:5050
 •	Visitor counter increments with each visit
 •	MongoDB stays connected and data is saved
 •	/health, /metrics, /reset endpoints work
 •	Restarting does not reset the counter
-________________________________________
-🧠 Learning Outcomes
+
+
+
+## 🧠 Learning Outcomes
 You will learn to:
 •	Containerize a Flask app with MongoDB
 •	Use Docker and Docker Compose
 •	Configure environments and dependencies
 •	Set up persistent storage and service dependencies
 •	Understand RESTful APIs and web app deployment
-________________________________________
-👨🏫 Final Notes
+
+
+
+## 👨🏫 Final Notes
 Take a screenshot of your app running and submit your GitHub repo.
 Remember: MongoDB must persist data and all buttons should work.
+
 You're done — congratulations on completing Project 1 of the Nebulance Systems BootCamp DevOps Class2025A!
 
 
